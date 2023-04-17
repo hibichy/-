@@ -59,8 +59,12 @@ if uploaded_file is not None:
     ax.set(xlabel="Predicted values", ylabel="Observed values")
     st.pyplot(fig)
     
+   
     # x軸に使用する説明変数を選択する
     x_col = st.selectbox('X軸に使用するカラム', X_cols)
+    
+    #選択した変数の値をゲット
+    B=df[x_col].Values
     
     ax.plot(y_pred, y)
     ax.set_xlabel('y_pred')
@@ -70,8 +74,8 @@ if uploaded_file is not None:
 
     # グラフを描画する
     fig, ax = plt.subplots()
-    ax.scatter(X, y, color='blue', label='True values')
-    ax.plot(X, y_pred, color='red', linewidth=3, label='Predicted values')
+    ax.scatter(B, y, color='blue', label='True values')
+    ax.plot(B, y_pred, color='red', label='Predicted values')
     ax.set_xlabel(x_col)
     ax.set_ylabel('Value')
     ax.legend()
