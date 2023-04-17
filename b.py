@@ -63,11 +63,11 @@ if uploaded_file is not None:
     x_col = st.selectbox('X軸に使用するカラム', X_cols)
 
     #シリーズ型に変換　
-    y_pred= pd.Series(y_pred, name = y_col +"の予測値")
+    u = pd.Series(y_pred, name = y_col +"の予測値")
     
     # 線形回帰モデルを構築する
     B = df[x_col].values.reshape(-1, 1)
-    y_pred = y_pred.values.reshape(-1, 1)
+    y_predpred = u.values.reshape(-1, 1)
     y =y.values.reshape(-1, 1)
     
     # グラフを描画する
