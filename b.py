@@ -58,9 +58,6 @@ if uploaded_file is not None:
     sns.scatterplot(x=y_pred, y=y, ax=ax)
     ax.set(xlabel="Predicted values", ylabel="Observed values")
 
-    # 近似曲線のプロット
-    sns.lineplot(x=y_pred, y=y, ax=ax, color="r", linewidth=2)
-
     st.pyplot(fig)
 
     
