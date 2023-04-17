@@ -77,7 +77,17 @@ if uploaded_file is not None:
     ax.set_xlabel(x_col)
     ax.set_ylabel('Value')
     ax.legend()
+
+    # スライダーでx軸の範囲を調整
+    x_range = st.slider('x-axis range', min_value=B.min(), max_value=B.max(), value=(B.min(), B.max()))
+    ax.set_xlim(x_range)
+
+    # スライダーでy軸の範囲を調整
+    y_range = st.slider('y-axis range', min_value=yyy.min(), max_value=yyy.max(), value=(yyy.min(), yyy.max()))
+    ax.set_ylim(y_range)
+
     st.pyplot(fig)
+
     
     # 評価指標の表示
     mse = mean_squared_error(y, y_pred)
