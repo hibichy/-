@@ -57,7 +57,12 @@ if uploaded_file is not None:
     fig, ax = plt.subplots()
     sns.scatterplot(x=y_pred, y=y, ax=ax)
     ax.set(xlabel="Predicted values", ylabel="Observed values")
+
+    # 近似曲線のプロット
+    sns.lineplot(x=y_pred, y=y, ax=ax, color="r", linewidth=2)
+
     st.pyplot(fig)
+
     
     # x軸に使用する説明変数を選択する
     x_col = st.selectbox('X軸に使用するカラム', X_cols)
