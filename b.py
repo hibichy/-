@@ -64,11 +64,11 @@ if uploaded_file is not None:
 
     #シリーズ型に変換　
     u = pd.Series(y_pred, name = y_col +"の予測値")
-    
+    yy=pd.Series(y,name=y_col)
     # 線形回帰モデルを構築する
     B = df[x_col].values.reshape(-1, 1)
     y_predpred = u.values.reshape(-1, 1)
-    y =y.values.reshape(-1, 1)
+    yyy =yy.values.reshape(-1, 1)
     
     # グラフを描画する
     fig, ax = plt.subplots()
