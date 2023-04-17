@@ -59,29 +59,6 @@ if uploaded_file is not None:
     ax.set(xlabel="Predicted values", ylabel="Observed values")
     st.pyplot(fig)
     
-   
-    # x軸に使用する説明変数を選択する
-    x_col = st.selectbox('X軸に使用するカラム', X_cols)
-    
-    #選択した変数の値をゲット
-    B=df[x_col].Values
-    
-    ax.plot(y_pred, y)
-    ax.set_xlabel('y_pred')
-    ax.set_ylabel('y')
-    ax.autoscale()
-    plt.show()
-
-    # グラフを描画する
-    fig, ax = plt.subplots()
-    ax.scatter(B, y, color='blue', label='True values')
-    ax.plot(B, y_pred, color='red', label='Predicted values')
-    ax.set_xlabel(x_col)
-    ax.set_ylabel('Value')
-    ax.legend()
-    st.pyplot(fig)
-
-    # 評価指標の表示
     # 評価指標の表示
     mse = mean_squared_error(y, y_pred)
     rmse = np.sqrt(mse)
