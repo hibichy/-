@@ -58,18 +58,24 @@ if uploaded_file is not None:
     sns.scatterplot(x=y_pred, y=y, ax=ax)
     ax.set(xlabel="Predicted values", ylabel="Observed values")
     st.pyplot(fig)
-
+    
+    # x軸に使用する説明変数を選択する
+    x_col = st.selectbox('X軸に使用するカラム', X_cols)
+    
     ax.plot(y_pred, y)
     ax.set_xlabel('y_pred')
     ax.set_ylabel('y')
     ax.autoscale()
     plt.show()
 
+    # グラフを描画する
     fig, ax = plt.subplots()
-    ax.plot(y, label='True', color='red')
-    ax.plot(y_pred, label='Predicted', color='blue')
+    ax.scatter(X, y, color='blue', label='True values')
+    ax.plot(X, y_pred, color='red', linewidth=3, label='Predicted values')
+    ax.set_xlabel(x_col)
+    ax.set_ylabel('Value')
     ax.legend()
-    plt.show()
+    st.pyplot(fig)
 
     # 評価指標の表示
     # 評価指標の表示
