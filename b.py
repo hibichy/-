@@ -79,11 +79,11 @@ if uploaded_file is not None:
     ax.legend()
 
     # スライダーでx軸の範囲を調整
-    x_range = st.slider('x-axis range', min_value=B.min(), max_value=B.max(), value=(B.min(), B.max()))
+    x_range = st.slider('x-axis range', min_value= -1000, max_value=10000, value=(-1000,10000))
     ax.set_xlim(x_range)
 
     # スライダーでy軸の範囲を調整
-    y_range = st.slider('y-axis range', min_value=yyy.min(), max_value=yyy.max(), value=(yyy.min(), yyy.max()))
+    y_range = st.slider('y-axis range', min_value=-1000, max_value=10000, value=(-1000,10000))
     ax.set_ylim(y_range)
 
     st.pyplot(fig)
