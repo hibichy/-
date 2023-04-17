@@ -72,8 +72,8 @@ if uploaded_file is not None:
     
     # グラフを描画する
     fig, ax = plt.subplots()
-    ax.scatter(B, y, color='blue', label='True values')
-    ax.plot(B, y_pred, color='red', linewidth=3, label='Predicted values')
+    ax.scatter(B, yyy, color='blue', label='True values')
+    ax.plot(B, y_predpred, color='red', linewidth=3, label='Predicted values')
     ax.set_xlabel(x_col)
     ax.set_ylabel('Value')
     ax.legend()
