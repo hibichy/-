@@ -63,8 +63,8 @@ if uploaded_file is not None:
     x_col = st.selectbox('X軸に使用するカラム', X_cols)
 
     # 線形回帰モデルを構築する
-    X = data[x_col].values.reshape(-1, 1)
-    y_pred =  y_pred.values.reshape(-1, 1)
+    X = df[x_col].values.reshape(-1, 1)
+    y_pred = y_pred.values.reshape(-1, 1)
     y =y.values.reshape(-1, 1)
     
     # グラフを描画する
