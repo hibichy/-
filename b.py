@@ -52,7 +52,7 @@ if uploaded_file is not None:
     st.write(f"R^2 = {r2:.2f}")
 
 
-    # 予測値と実測値のプロット
+    # 予測値と実測値のプロット グラフ１
     y_pred = reg_model.predict(X)
     fig, ax = plt.subplots()
     sns.scatterplot(x=y_pred, y=y, ax=ax)
@@ -69,8 +69,17 @@ if uploaded_file is not None:
     B = df[x_col].values.reshape(-1, 1)
     y_predpred = u.values.reshape(-1, 1)
     yyy =yy.values.reshape(-1, 1)
+
+    # グラフを描画する　グラフ2
+    fig, ax = plt.subplots()
+    ax.scatter(B, yyy, color='blue', label='True values')
+    ax.plot(B, y_predpred, color='red', linewidth=3, label='Predicted values')
+    ax.set_xlabel(x_col)
+    ax.set_ylabel('Value')
+    ax.legend()
+    st.pyplot(fig)
     
-    # グラフを描画する
+    # グラフを描画する　グラフ３
     fig, ax = plt.subplots()
     ax.scatter(B, yyy, color='blue', label='True values')
     ax.plot(B, y_predpred, color='red', linewidth=3, label='Predicted values')
