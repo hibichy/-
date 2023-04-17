@@ -62,15 +62,18 @@ if uploaded_file is not None:
     # x軸に使用する説明変数を選択する
     x_col = st.selectbox('X軸に使用するカラム', X_cols)
 
+    #シリーズ型に変換　
+    y_pred= pd.Series(y_pred, name = y_col +"の予測値")
+    
     # 線形回帰モデルを構築する
     B = df[x_col].values.reshape(-1, 1)
-    y_pred = y_pred.tolist().reshape(-1, 1)
+    y_pred = y_pred.values.reshape(-1, 1)
     y =y.values.reshape(-1, 1)
     
     # グラフを描画する
     fig, ax = plt.subplots()
     ax.scatter(B, y, color='blue', label='True values')
-    ax.plot(B, y, color='red', linewidth=3, label='Predicted values')
+    ax.plot(B, y_pred, color='red', linewidth=3, label='Predicted values')
     ax.set_xlabel(x_col)
     ax.set_ylabel('Value')
     ax.legend()
