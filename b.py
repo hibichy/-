@@ -59,6 +59,23 @@ if uploaded_file is not None:
     ax.set(xlabel="Predicted values", ylabel="Observed values")
     st.pyplot(fig)
     
+    # x軸に使用する説明変数を選択する
+    x_col = st.selectbox('X軸に使用するカラム', X_cols)
+
+    # 線形回帰モデルを構築する
+    X = data[x_col].values.reshape(-1, 1)
+    y_pred =  y_pred.values.reshape(-1, 1)
+    y =y.values.reshape(-1, 1)
+    
+    # グラフを描画する
+    fig, ax = plt.subplots()
+    ax.scatter(X, y, color='blue', label='True values')
+    ax.plot(X, y, color='red', linewidth=3, label='Predicted values')
+    ax.set_xlabel(x_col)
+    ax.set_ylabel('Value')
+    ax.legend()
+    st.pyplot(fig)
+    
     # 評価指標の表示
     mse = mean_squared_error(y, y_pred)
     rmse = np.sqrt(mse)
