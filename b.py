@@ -35,7 +35,7 @@ if uploaded_file is not None:
 
     # その他の場合
     else:
-        st.warning("CSVファイルまたはExcelファイルをアップロードしてください"   
+        st.warning("CSVファイルまたはExcelファイルをアップロードしてください")  
       
 else:
     # ファイルがアップロードされなかった場合
