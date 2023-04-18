@@ -41,10 +41,7 @@ if uploaded_file is not None:
     # 読み込んだデータフレームを表示する
     if 'df' in locals():
         st.write(df)
-        
-else:
-    # ファイルがアップロードされなかった場合
-    st.warning("ファイルをアップロードしてください")                   
+                   
         
 
    
@@ -138,3 +135,6 @@ else:
     }))
 
 
+else:
+    # ファイルがアップロードされなかった場合
+    st.warning("ファイルをアップロードしてください") 
