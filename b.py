@@ -14,16 +14,33 @@ st.markdown("<h1 style='text-align: center;'>回帰分析アプリ</h1>", unsafe
 # ファイルアップロード機能を実装する
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
-# 1. CSVまたはExcelファイルのインポート
-uploaded_file = st.file_uploader("ファイルをアップロードしてください。", type=["csv", "xlsx"])
+
+
+
+# ファイルをアップロードするための部品
+uploaded_file = st.file_uploader("ファイルをアップロードしてください", type=['csv', 'xlsx'])
 
 if uploaded_file is not None:
-    # アップロードされたファイルを読み込む
-    if uploaded_file.type == "text/csv":
-        df = pd.read_csv(uploaded_file)
-    else:
-        df = pd.read_excel(uploaded_file, engine="openpyxl")
+    # ファイルがアップロードされた場合
+    file_type = uploaded_file.type
 
+    # CSVファイルの場合
+    if file_type == 'text/csv':
+        df = pd.read_csv(uploaded_file)
+
+    # Excelファイルの場合
+    elif file_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+        sheet_name = st.selectbox("シートを選択してください", pd.ExcelFile(uploaded_file).sheet_names)
+        df = pd.read_excel(uploaded_file, sheet_name=sheet_name, engine="openpyxl")
+
+    # その他の場合
+    else:
+        st.warning("CSVファイルまたはExcelファイルをアップロードしてください")
+else:
+    # ファイルがアップロードされなかった場合
+    st.warning("ファイルをアップロードしてください")
+        
+        
     # 読み込んだデータフレームを表示する
     st.write(df)
 
