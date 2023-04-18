@@ -35,11 +35,7 @@ if uploaded_file is not None:
 
     # その他の場合
     else:
-        st.warning("CSVファイルまたはExcelファイルをアップロードしてください")
-else:
-    # ファイルがアップロードされなかった場合
-    st.warning("ファイルをアップロードしてください")
-        
+        st.warning("CSVファイルまたはExcelファイルをアップロードしてください"        
         
     # 読み込んだデータフレームを表示する
     st.write(df)
