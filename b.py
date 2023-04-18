@@ -33,16 +33,21 @@ if uploaded_file is not None:
         sheet_name = st.selectbox("シートを選択してください", pd.ExcelFile(uploaded_file).sheet_names)
         df = pd.read_excel(uploaded_file, sheet_name=sheet_name, engine="openpyxl")
 
+
     # その他の場合
     else:
         st.warning("CSVファイルまたはExcelファイルをアップロードしてください")  
-      
+        
+    # 読み込んだデータフレームを表示する
+    if 'df' in locals():
+        st.write(df)
+        
 else:
     # ファイルがアップロードされなかった場合
     st.warning("ファイルをアップロードしてください")                   
         
-    # 読み込んだデータフレームを表示する
-    st.write(df)
+
+   
 
     # 説明変数と目的変数の選択
     st.sidebar.title("Regression Analysis")
