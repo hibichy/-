@@ -8,6 +8,14 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import scipy.stats as stats
 
+
+import chardet
+
+with open('file.xlsx', 'rb') as f:
+    result = chardet.detect(f.read())
+
+
+
 #画面のタイトルをつける
 st.markdown("<h1 style='text-align: center;'>回帰分析アプリ</h1>", unsafe_allow_html=True)
 
@@ -21,17 +29,21 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 uploaded_file = st.file_uploader("ファイルをアップロードしてください", type=['csv', 'xlsx'])
 
 if uploaded_file is not None:
+    
+    with open(uploaded_file, 'rb') as f:
+    result = chardet.detect(f.read())
+
     # ファイルがアップロードされた場合
     file_type = uploaded_file.type
 
     # CSVファイルの場合
     if file_type == 'text/csv':
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file,encoding=result['encoding'])
 
     # Excelファイルの場合
     elif file_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
         sheet_name = st.selectbox("シートを選択してください", pd.ExcelFile(uploaded_file).sheet_names)
-        df = pd.read_excel(uploaded_file, sheet_name=sheet_name, engine="openpyxl")
+        df = pd.read_excel(uploaded_file, sheet_name=sheet_name, engine="openpyxl",encoding=result['encoding'])
 
 
     # その他の場合
