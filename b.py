@@ -35,11 +35,12 @@ if uploaded_file is not None:
         sheet_name = st.selectbox("シートを選択してください", pd.ExcelFile(uploaded_file).sheet_names)
         # Excelファイルを読み込む
         with open('data.xlsx', 'rb') as f:
+            
         # エンコーディングを自動検出
-        import chardet
-        result = chardet.detect(f.read())
-        # Excelファイルを読み込む
-        df = pd.read_excel('data.xlsx', encoding=result['encoding'])
+            import chardet
+            result = chardet.detect(f.read())
+            # Excelファイルを読み込む
+            df = pd.read_excel('data.xlsx', encoding=result['encoding'])
 
 
     # その他の場合
