@@ -28,14 +28,14 @@ if uploaded_file is not None:
 
     # CSVファイルの場合
     if file_type == 'text/csv':
-        df = pd.read_csv(uploaded_file,encoding=result['encoding'])
+        df = pd.read_csv(uploaded_file)
 
     # Excelファイルの場合
     elif file_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
         sheet_name = st.selectbox("シートを選択してください", pd.ExcelFile(uploaded_file).sheet_names)
        
         # Excelファイルを読み込む
-        df = pd.read_excel(uploaded_file, encoding=result['encoding'])
+        df = pd.read_excel(uploaded_file)
 
 
     # その他の場合
