@@ -31,7 +31,7 @@ uploaded_file = st.file_uploader("ファイルをアップロードしてくだ�
 if uploaded_file is not None:
     
     with open(uploaded_file, 'rb') as f:
-    result = chardet.detect(f.read())
+        result = chardet.detect(f.read())
 
     # ファイルがアップロードされた場合
     file_type = uploaded_file.type
