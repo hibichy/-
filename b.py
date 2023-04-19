@@ -22,9 +22,6 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 uploaded_file = st.file_uploader("ファイルをアップロードしてください", type=['csv', 'xlsx'])
 
 if uploaded_file is not None:
-    
-    with open(uploaded_file, 'rb') as f:
-        result = chardet.detect(f.read())
 
     # ファイルがアップロードされた場合
     file_type = uploaded_file.type
@@ -36,7 +33,7 @@ if uploaded_file is not None:
     # Excelファイルの場合
     elif file_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
         sheet_name = st.selectbox("シートを選択してください", pd.ExcelFile(uploaded_file).sheet_names)
-        df = pd.read_excel(uploaded_file, sheet_name=sheet_name, engine="openpyxl",encoding=result['encoding'])
+        df = pd.read_excel(uploaded_file, sheet_name=sheet_name, engine="openpyxl",encoding="cp932")
 
 
     # その他の場合
