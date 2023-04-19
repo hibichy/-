@@ -7,14 +7,7 @@ import seaborn as sns
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import scipy.stats as stats
-
-
 import chardet
-
-with open('file.xlsx', 'rb') as f:
-    result = chardet.detect(f.read())
-
-
 
 #画面のタイトルをつける
 st.markdown("<h1 style='text-align: center;'>回帰分析アプリ</h1>", unsafe_allow_html=True)
