@@ -1,3 +1,4 @@
+
 # 必要なライブラリをインポートする
 import streamlit as st
 import pandas as pd
@@ -8,7 +9,6 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import scipy.stats as stats
 import chardet
-import seaborn as sns
 
 #画面のタイトルをつける
 st.markdown("<h1 style='text-align: center;'>回帰分析アプリ</h1>", unsafe_allow_html=True)
