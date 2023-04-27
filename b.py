@@ -1,5 +1,3 @@
-!pip install seaborn
-
 # 必要なライブラリをインポートする
 import streamlit as st
 import pandas as pd
